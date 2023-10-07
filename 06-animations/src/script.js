@@ -11,6 +11,7 @@ const scene = new THREE.Scene()
 const geometry = new THREE.BoxGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
+mesh.rotateX(0.5)
 scene.add(mesh)
 
 // Sizes
@@ -21,7 +22,7 @@ const sizes = {
 
 // Camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-camera.position.z = 3
+camera.position.set(0, 0, 4)
 scene.add(camera)
 
 // Renderer
@@ -33,8 +34,8 @@ const renderer = new THREE.WebGLRenderer({
 const clock = new THREE.Clock()
 
 // Using GSAP for animations
-gsap.to(mesh.position, { duration: 1, x: 2, delay: 1})
-gsap.to(mesh.position, { duration: 1, x: 0, delay: 2 });
+// gsap.to(mesh.position, { duration: 1, x: 2, delay: 1})
+// gsap.to(mesh.position, { duration: 1, x: 0, delay: 2 });
 
 // Using time to normalize animation.
 // Animations
@@ -48,7 +49,7 @@ const tick = () => {
   // const deltaTime = currentTime - time
   // time = currentTime
   // console.log(elapsedTime)
-  // mesh.rotation.y = elapsedTime
+  mesh.rotation.y = elapsedTime
   // mesh.position.y = Math.sin(elapsedTime)
   // mesh.position.x = Math.cos(elapsedTime)
 
